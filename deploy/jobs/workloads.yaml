@@ -8,6 +8,6 @@ runtime_env:
   working_dir: deploy
   upload_path: s3://anyscale-production-data-cld-eg7izt1xus17psxjrk3z3q2ddq/runtime
 
-entrypoint: bash workloads.sh
+entrypoint: bash jobs/workloads.sh
 
 max_retries: 0
