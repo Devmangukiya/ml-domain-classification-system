@@ -1,0 +1,13 @@
+name: workloads
+project_id: prj_hbeb2uey7lc5t4is6u3yq5j3hf
+
+cluster_env: dev-cluster-env
+compute_config: free-cpu
+
+runtime_env:
+  working_dir: deploy
+  upload_path: s3://anyscale-production-data-cld-eg7izt1xus17psxjrk3z3q2ddq/runtime
+
+entrypoint: bash workloads.sh
+
+max_retries: 0
