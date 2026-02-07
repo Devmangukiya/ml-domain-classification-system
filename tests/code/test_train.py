@@ -31,7 +31,7 @@ def test_train_model(dataset_loc):
         num_epochs=2,
         num_samples=45,
         batch_size=64,
-        results_fp=None,
+        results_fp=None
     )
     utils.delete_experiment(experiment_name=experiment_name)
 
