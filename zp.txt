@@ -1,4 +1,3 @@
-set -ex
 
 export PYTHONPATH=$PYTHONPATH:$PWD
 mkdir -p results
@@ -24,10 +23,9 @@ python components/train.py \
     --experiment-name "$EXPERIMENT_NAME" \
     --dataset-loc "$DATASET_LOC" \
     --train-loop-config "$TRAIN_LOOP_CONFIG" \
-    --num-workers 1 \
+    --num-workers 2 \
     --cpu-per-worker 3 \
-    --num-samples 24 \
-    --num-epochs 2 \
+    --num-epochs 10 \
     --batch-size 256 \
     --results-fp $RESULTS_FILE
 
@@ -46,7 +44,7 @@ python components/evaluate.py \
 
 # Test model
 RESULTS_FILE=results/test_model_results.txt
-pytest --run-id=RUN_ID tests/model --verbose --disable-warnings > $RESULTS_FILE
+pytest --run-id=$RUN_ID tests/model --verbose --disable-warnings > $RESULTS_FILE
 cat $RESULTS_FILE
 
 
@@ -54,10 +52,18 @@ cat $RESULTS_FILE
 export MODEL_REGISTRY=$(python -c "from components import config; print(config.MODEL_REGISTRY)")
 BUCKET=model-registry-dev-mangukiya-v2
 
+
+GITHUB_USERNAME=Devmangukiya
 aws s3 cp "$MODEL_REGISTRY" \
-  "s3://$BUCKET/$GITHUB_USERNAME/mlflow/" \
+  "s3://$BUCKET/$GITHUB_USERNAME/mlflow_1/" \
   --recursive
 
 aws s3 cp results/ \
-  "s3://$BUCKET/$GITHUB_USERNAME/results/" \
+  "s3://$BUCKET/$GITHUB_USERNAME/results_1/" \
   --recursive
+
+
+echo "Run succesfully completed"
+
+
+https://chatgpt.com/share/698b4dbd-8858-8010-ab38-954c5533a90f

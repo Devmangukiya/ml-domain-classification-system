@@ -1,8 +1,8 @@
-name: workloads-minimal
-project_id: prj_hbeb2uey7lc5t4is6u3yq5j3hf
+name: workloads
+project_id: prj_8yaz7u8kgbr69ezrbrw8aczfb9
 
-cluster_env: cluster-env
-compute_config: final-cpu
+cluster_env: cluster-env-dev
+cluster_compute: cluster-compute-dev
 
 runtime_env:
   working_dir: .
